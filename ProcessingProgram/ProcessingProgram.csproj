@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B73E0268-672E-49A6-9446-3FAAE2D5CC03}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProcessingProgram</RootNamespace>
+    <AssemblyName>ProcessingProgram</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="acdbmgd">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2012 - Russian\acdbmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acmgd">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2012 - Russian\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionGenerator.cs" />
+    <Compile Include="Constants\ProcessMode.cs" />
+    <Compile Include="IMachine.cs" />
+    <Compile Include="Machine.cs" />
+    <Compile Include="AutocadPlugin.cs" />
+    <Compile Include="AutocadUtils.cs" />
+    <Compile Include="Constants\ActionType.cs" />
+    <Compile Include="Constants\CompensationSide.cs" />
+    <Compile Include="Constants\CurveType.cs" />
+    <Compile Include="Constants\EventArgs.cs" />
+    <Compile Include="Constants\FeedType.cs" />
+    <Compile Include="Constants\MachineKind.cs" />
+    <Compile Include="Constants\ToolpathCurveType.cs" />
+    <Compile Include="Constants\ToolType.cs" />
+    <Compile Include="Forms\ObjectForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ObjectForm.Designer.cs">
+      <DependentUpon>ObjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\ProcessCurve.cs" />
+    <Compile Include="Objects\ProcessingAction.cs" />
+    <Compile Include="Objects\ProcessingParams.cs" />
+    <Compile Include="Objects\ProcessObject.cs" />
+    <Compile Include="Objects\ProcessObjectFactory.cs" />
+    <Compile Include="Objects\Settings.cs" />
+    <Compile Include="Objects\Tool.cs" />
+    <Compile Include="CalcUtils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\ProcessingForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProcessingForm.Designer.cs">
+      <DependentUpon>ProcessingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProgramForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProgramForm.Designer.cs">
+      <DependentUpon>ProgramForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramGenerator.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingForm.Designer.cs">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ToolStoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ToolStoreForm.Designer.cs">
+      <DependentUpon>ToolStoreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\ProcessingForm.resx">
+      <DependentUpon>ProcessingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProgramForm.resx">
+      <DependentUpon>ProgramForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ObjectForm.resx">
+      <DependentUpon>ObjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingForm.resx">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ToolStoreForm.resx">
+      <DependentUpon>ToolStoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\ProcessingParams.datasource" />
+    <None Include="Properties\DataSources\ProcessingProgram.ViewModels.ProcessObjectViewModel.datasource" />
+    <None Include="Properties\DataSources\ProcessObject.datasource" />
+    <None Include="Properties\DataSources\Tool.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel161.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrowdown_blue16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrowup_blue16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\border_none16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\border_outside16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_square16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel16_h.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_row16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drawing16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\insert_symbol16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\insert16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh_square16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_as16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lightning_bolt24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_left_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_right_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\replace2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\import1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nav_left_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nav_right_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\breakpoint_selection_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\element_selection_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\breakpoint_selection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\element_selection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\element_up.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
