@@ -1,23 +1,23 @@
-namespace ProcessingProgram.Constants
+п»їnamespace ProcessingProgram.Constants
 {
     /// <summary>
-    /// Тип инструмента
+    /// РўРёРї РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°
     /// </summary>
     public static class ToolType
     {
         /// <summary>
-        /// Фреза
+        /// Р¤СЂРµР·Р°
         /// </summary>
-        public const string Cutter = "Фреза";
+        public const string Cutter = "Р¤СЂРµР·Р°";
 
         /// <summary>
-        /// Сверло
+        /// РЎРІРµСЂР»Рѕ
         /// </summary>
-        public const string Drill = "Сверло";
+        public const string Drill = "РЎРІРµСЂР»Рѕ";
 
         /// <summary>
-        /// Диск
+        /// Р”РёСЃРє
         /// </summary>
-        public const string Disk = "Диск";
+        public const string Disk = "Р”РёСЃРє";
     }
 }
