@@ -210,7 +210,7 @@
             // 
             // simpleButtonSetSector
             // 
-            this.simpleButtonSetSector.Location = new System.Drawing.Point(36, 226);
+            this.simpleButtonSetSector.Location = new System.Drawing.Point(36, 379);
             this.simpleButtonSetSector.Name = "simpleButtonSetSector";
             this.simpleButtonSetSector.Size = new System.Drawing.Size(146, 22);
             this.simpleButtonSetSector.StyleController = this.dataLayoutControl1;
@@ -220,7 +220,7 @@
             // 
             // comboBoxEdit1
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(175, -42);
+            this.comboBoxEdit1.Location = new System.Drawing.Point(175, 111);
             this.comboBoxEdit1.Name = "comboBoxEdit1";
             this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -237,7 +237,7 @@
             // checkEditOneDirection
             // 
             this.checkEditOneDirection.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSettings, "OneDirection", true));
-            this.checkEditOneDirection.Location = new System.Drawing.Point(24, 173);
+            this.checkEditOneDirection.Location = new System.Drawing.Point(24, 326);
             this.checkEditOneDirection.Name = "checkEditOneDirection";
             this.checkEditOneDirection.Properties.Caption = "Однонаправленная обработка";
             this.checkEditOneDirection.Size = new System.Drawing.Size(320, 19);
@@ -247,7 +247,7 @@
             // checkEditWithCompensation
             // 
             this.checkEditWithCompensation.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSettings, "WithCompensation", true));
-            this.checkEditWithCompensation.Location = new System.Drawing.Point(24, 150);
+            this.checkEditWithCompensation.Location = new System.Drawing.Point(24, 303);
             this.checkEditWithCompensation.Name = "checkEditWithCompensation";
             this.checkEditWithCompensation.Properties.Caption = "Компенсация станком";
             this.checkEditWithCompensation.Size = new System.Drawing.Size(320, 19);
@@ -262,7 +262,7 @@
             0,
             0,
             0});
-            this.spinEdit17.Location = new System.Drawing.Point(187, 324);
+            this.spinEdit17.Location = new System.Drawing.Point(187, 477);
             this.spinEdit17.Name = "spinEdit17";
             this.spinEdit17.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -278,7 +278,7 @@
             0,
             0,
             0});
-            this.spinEdit16.Location = new System.Drawing.Point(187, 276);
+            this.spinEdit16.Location = new System.Drawing.Point(187, 429);
             this.spinEdit16.Name = "spinEdit16";
             this.spinEdit16.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -294,7 +294,7 @@
             0,
             0,
             0});
-            this.spinEdit15.Location = new System.Drawing.Point(187, 252);
+            this.spinEdit15.Location = new System.Drawing.Point(187, 405);
             this.spinEdit15.Name = "spinEdit15";
             this.spinEdit15.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -310,7 +310,7 @@
             0,
             0,
             0});
-            this.spinEdit14.Location = new System.Drawing.Point(187, 300);
+            this.spinEdit14.Location = new System.Drawing.Point(187, 453);
             this.spinEdit14.Name = "spinEdit14";
             this.spinEdit14.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -326,7 +326,7 @@
             0,
             0,
             0});
-            this.spinEdit13.Location = new System.Drawing.Point(175, 6);
+            this.spinEdit13.Location = new System.Drawing.Point(175, 159);
             this.spinEdit13.Name = "spinEdit13";
             this.spinEdit13.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -342,7 +342,7 @@
             0,
             0,
             0});
-            this.spinEdit12.Location = new System.Drawing.Point(175, 30);
+            this.spinEdit12.Location = new System.Drawing.Point(175, 183);
             this.spinEdit12.Name = "spinEdit12";
             this.spinEdit12.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -358,7 +358,7 @@
             0,
             0,
             0});
-            this.spinEdit9.Location = new System.Drawing.Point(187, 466);
+            this.spinEdit9.Location = new System.Drawing.Point(187, 619);
             this.spinEdit9.Name = "spinEdit9";
             this.spinEdit9.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -369,7 +369,7 @@
             // comboBoxEditRetractType
             // 
             this.comboBoxEditRetractType.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProcessParams, "RetractionType", true));
-            this.comboBoxEditRetractType.Location = new System.Drawing.Point(187, 394);
+            this.comboBoxEditRetractType.Location = new System.Drawing.Point(187, 547);
             this.comboBoxEditRetractType.Name = "comboBoxEditRetractType";
             this.comboBoxEditRetractType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -385,7 +385,7 @@
             0,
             0,
             0});
-            this.spinEdit10.Location = new System.Drawing.Point(187, 442);
+            this.spinEdit10.Location = new System.Drawing.Point(187, 595);
             this.spinEdit10.Name = "spinEdit10";
             this.spinEdit10.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -401,7 +401,7 @@
             0,
             0,
             0});
-            this.spinEdit11.Location = new System.Drawing.Point(187, 418);
+            this.spinEdit11.Location = new System.Drawing.Point(187, 571);
             this.spinEdit11.Name = "spinEdit11";
             this.spinEdit11.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -412,7 +412,7 @@
             // comboBoxEditFeedType
             // 
             this.comboBoxEditFeedType.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProcessParams, "FeedType", true));
-            this.comboBoxEditFeedType.Location = new System.Drawing.Point(187, 394);
+            this.comboBoxEditFeedType.Location = new System.Drawing.Point(187, 547);
             this.comboBoxEditFeedType.Name = "comboBoxEditFeedType";
             this.comboBoxEditFeedType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -428,7 +428,7 @@
             0,
             0,
             0});
-            this.spinEdit8.Location = new System.Drawing.Point(187, 466);
+            this.spinEdit8.Location = new System.Drawing.Point(187, 619);
             this.spinEdit8.Name = "spinEdit8";
             this.spinEdit8.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -444,7 +444,7 @@
             0,
             0,
             0});
-            this.spinEdit7.Location = new System.Drawing.Point(187, 442);
+            this.spinEdit7.Location = new System.Drawing.Point(187, 595);
             this.spinEdit7.Name = "spinEdit7";
             this.spinEdit7.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -460,7 +460,7 @@
             0,
             0,
             0});
-            this.spinEdit6.Location = new System.Drawing.Point(187, 418);
+            this.spinEdit6.Location = new System.Drawing.Point(187, 571);
             this.spinEdit6.Name = "spinEdit6";
             this.spinEdit6.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -476,7 +476,7 @@
             0,
             0,
             0});
-            this.spinEdit4.Location = new System.Drawing.Point(175, 126);
+            this.spinEdit4.Location = new System.Drawing.Point(175, 279);
             this.spinEdit4.Name = "spinEdit4";
             this.spinEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -492,7 +492,7 @@
             0,
             0,
             0});
-            this.spinEdit5.Location = new System.Drawing.Point(175, 102);
+            this.spinEdit5.Location = new System.Drawing.Point(175, 255);
             this.spinEdit5.Name = "spinEdit5";
             this.spinEdit5.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -508,7 +508,7 @@
             0,
             0,
             0});
-            this.spinEdit3.Location = new System.Drawing.Point(175, -18);
+            this.spinEdit3.Location = new System.Drawing.Point(175, 135);
             this.spinEdit3.Name = "spinEdit3";
             this.spinEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -524,7 +524,7 @@
             0,
             0,
             0});
-            this.spinEdit1.Location = new System.Drawing.Point(175, 78);
+            this.spinEdit1.Location = new System.Drawing.Point(175, 231);
             this.spinEdit1.Name = "spinEdit1";
             this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -541,7 +541,7 @@
             0,
             0,
             0});
-            this.spinEdit2.Location = new System.Drawing.Point(175, 54);
+            this.spinEdit2.Location = new System.Drawing.Point(175, 207);
             this.spinEdit2.Name = "spinEdit2";
             this.spinEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -553,7 +553,7 @@
             // textEdit1
             // 
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSettings, "MachineIPAddress", true));
-            this.textEdit1.Location = new System.Drawing.Point(163, -96);
+            this.textEdit1.Location = new System.Drawing.Point(163, 57);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Size = new System.Drawing.Size(193, 20);
             this.textEdit1.StyleController = this.dataLayoutControl1;
@@ -563,7 +563,7 @@
             // 
             this.radioGroupMachineName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSettings, "MachineName", true));
             this.radioGroupMachineName.EditValue = "Krea";
-            this.radioGroupMachineName.Location = new System.Drawing.Point(12, -125);
+            this.radioGroupMachineName.Location = new System.Drawing.Point(12, 28);
             this.radioGroupMachineName.Name = "radioGroupMachineName";
             this.radioGroupMachineName.Properties.Columns = 2;
             this.radioGroupMachineName.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
@@ -583,7 +583,7 @@
             this.layoutControlItem2,
             this.layoutControlGroup2,
             this.emptySpaceItem1});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, -153);
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(368, 699);
             this.layoutControlGroup1.TextVisible = false;
@@ -658,7 +658,7 @@
             this.layoutControlItem9.Location = new System.Drawing.Point(0, 144);
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Size = new System.Drawing.Size(324, 24);
-            this.layoutControlItem9.Text = "Суммарная глубина реза, мм";
+            this.layoutControlItem9.Text = "Смещение от детали, мм";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(148, 13);
             // 
             // layoutControlItem8

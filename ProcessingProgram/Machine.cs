@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
-using Autodesk.AutoCAD.Windows.Data;
-using DevExpress.XtraPrinting;
 using ProcessingProgram.Constants;
 using ProcessingProgram.Objects;
 

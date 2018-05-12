@@ -193,7 +193,7 @@ namespace ProcessingProgram
             Point3dCollection points = new Point3dCollection();
             foreach (Curve curve in sectionCurves)
             {
-                curve.IntersectWith(line, Intersect.ExtendArgument, points, IntPtr.Zero, IntPtr.Zero);
+                curve.IntersectWith(line, Intersect.ExtendArgument, points, 0, 0);
                 if (points.Count > 0)
                     return points[0].X;
             }

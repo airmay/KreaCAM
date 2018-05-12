@@ -128,15 +128,15 @@ namespace ProcessingProgram
         private static void CuttingContinuousDescent(ProcessObject processObject, Curve curve)
         {
             var par = processObject.ProcessingParams;
-            var toolpathCurve = AutocadUtils.GetDisplacementCopy(curve, Settings.Thickness);
+            var toolpathCurve = AutocadUtils.GetOffsetCopy(curve, Settings.WithCompensation ? 0 : processObject.Curve.OutsideSign * processObject.Tool.Diameter.Value / 2);
+            var toolpathCurves = AutocadUtils.Explode(toolpathCurve, processObject.Direction == -1);
+            toolpathCurve = AutocadUtils.GetDisplacementCopy(toolpathCurve, Settings.Thickness);
 
             Feed(toolpathCurve, processObject.Direction, processObject.Curve.OutsideSign, par, true);
 
-            var toolpathCurves = AutocadUtils.Explode(curve, processObject.Direction == -1);
-
             var z0 = Settings.Thickness - par.DepthAll;
             var z = Settings.Thickness;
-            var k = par.Depth/curve.GetLength();
+            var k = par.Depth / toolpathCurve.GetLength();
             IEnumerator<Curve> enumerator = toolpathCurves.GetEnumerator();
             enumerator.MoveNext();
             do
@@ -255,7 +255,8 @@ namespace ProcessingProgram
                     direction = -direction;
                 }
 
-                Curve toolpathCurve = AutocadUtils.GetOffsetCopy(curve, processObject.Curve.OutsideSign * s);
+                var s1 = Settings.WithCompensation ? s : s + processObject.Tool.Diameter.Value / 2;
+                Curve toolpathCurve = AutocadUtils.GetOffsetCopy(curve, processObject.Curve.OutsideSign * s1);
                 ObjectId toolObjectId = AutocadUtils.CreateToolCurve(s, toolpathCurve.StartPoint.Z, processObject.Tool.Thickness);
 
                 Feed(toolpathCurve, direction, processObject.Curve.OutsideSign, par, isFirstPass);
