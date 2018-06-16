@@ -11,7 +11,7 @@ namespace ProcessingProgram
     /// <summary>
     /// Методы генерации действий станка
     /// </summary>
-    public class Machine : IMachine
+    public class Machine //: IMachine
     {
         private static Settings Settings { get; set; }
         private readonly List<ProcessingAction> _processingActions;
@@ -84,24 +84,24 @@ namespace ProcessingProgram
             action.CompensationSide = compensation;
         }
 
-        public void EngageMove(Curve path)
+        public void EngageMove(Curve path, int? speed)
         {
-            PathMovement(ActionType.EngageMove, path);
+            PathMovement(ActionType.EngageMove, path, speed);
         }
 
-        public ProcessingAction Cutting(Curve path)
+        public ProcessingAction Cutting(Curve path, int? speed)
         {
-            return PathMovement(ActionType.Cutting, path);
+            return PathMovement(ActionType.Cutting, path, speed);
         }
 
-        public List<ProcessingAction> Cutting(List<Curve> pathsList)
+        public List<ProcessingAction> Cutting(List<Curve> pathsList, int? speed)
         {
-            return pathsList.ConvertAll(p => PathMovement(ActionType.Cutting, p));
+            return pathsList.ConvertAll(p => PathMovement(ActionType.Cutting, p, speed));
         }
 
-        public void RetractMove(Curve path)
+        public void RetractMove(Curve path, int? speed)
         {
-            PathMovement(ActionType.RetractMove, path);
+            PathMovement(ActionType.RetractMove, path, speed);
         }
 
         /// <summary>
@@ -154,7 +154,8 @@ namespace ProcessingProgram
             }
             else
             {
-                CreateProcessAction(ActionType.InitialMove, x: position.X, y: position.Y);
+                ChangePosition(ActionType.Move, "G0", position.X, position.Y);
+                //CreateProcessAction(ActionType.InitialMove, x: position.X, y: position.Y, speed: speed);
                 CreateProcessAction(ActionType.SpindleStart, Settings.Frequency.ToString());
                 _isSpindleStarted = true;
 
@@ -162,12 +163,12 @@ namespace ProcessingProgram
                 _position = new Point3d(position.X, position.Y, Settings.SafetyZ);
             }
             SetSpeed(speed);
-            ChangePosition(ActionType.AapproachMove, "G1", z: position.Z);
+            ChangePosition(ActionType.AapproachMove, "G1", z: position.Z, speed: speed);
         }
 
-        public void Move(Point3d position)
+        public void Move(Point3d position, int? speed)
         {
-            ChangePosition(ActionType.Move, "G1", position.X, position.Y, position.Z);
+            ChangePosition(ActionType.Move, "G1", position.X, position.Y, position.Z, speed: speed);
         }
 
         #endregion
@@ -179,14 +180,14 @@ namespace ProcessingProgram
         {
             if (_position.Z >= Settings.SafetyZ)
                 return;
-            ChangePosition(ActionType.DepartureMove, "G1", z: Settings.SafetyZ);
+            ChangePosition(ActionType.DepartureMove, "G1", z: Settings.SafetyZ, speed: ProcessingParams.GetDefault().GreatSpeed);
             SetCompensation(CompensationSide.None);
             CreateProcessAction(ActionType.DepartureMove, "G0", z: Settings.SafetyZ);
         }
 
-        private void ChangePosition(ActionType actionType, string param = null, double? x = null, double? y = null, double? z = null)
+        private void ChangePosition(ActionType actionType, string param = null, double? x = null, double? y = null, double? z = null, int? speed = null)
         {
-            var action = CreateProcessAction(actionType, param);           
+            var action = CreateProcessAction(actionType, param, speed: speed);           
             var oldPosition = _position;
             _position = new Point3d(x ?? _position.X, y ?? _position.Y, z ?? _position.Z);
             var line = new Line(oldPosition, _position);
@@ -200,7 +201,7 @@ namespace ProcessingProgram
         /// </summary>
         /// <param name="actionType">Тип действия</param>
         /// <param name="path">Траектория</param>
-        private ProcessingAction PathMovement(ActionType actionType, Curve path)
+        private ProcessingAction PathMovement(ActionType actionType, Curve path, int? speed = null)
         {
             if (path == null)
                 return null;
@@ -216,7 +217,7 @@ namespace ProcessingProgram
                 return null;
             }
 
-            var action = CreateProcessAction(actionType);
+            var action = CreateProcessAction(actionType, speed: speed);
             action.ObjectId = path.ObjectId != ObjectId.Null ? path.ObjectId : AutocadUtils.AddCurve(path, actionType);
             action.DirectObjectId = SetDirectLine(path);
             SetCoordinates(action, oldPosition, _position, path is Arc);
@@ -274,14 +275,14 @@ namespace ProcessingProgram
         /// </summary>
         /// <param name="actionType">Действие</param>
         /// <param name="param">Параметр</param>
-        private ProcessingAction CreateProcessAction(ActionType actionType, string param = null, double? x = null, double? y = null, double? z = null)
+        private ProcessingAction CreateProcessAction(ActionType actionType, string param = null, double? x = null, double? y = null, double? z = null, int? speed = null)
         {
             var action = new ProcessingAction
             {
                 No = _processingActions.Count + 1,
                 ActionType = actionType,
                 Param = param,
-                Speed = _isSpeedChanged ? _speed : null, 
+                Speed = speed, //_speed, //_isSpeedChanged ? _speed : null, 
                 X = Round(x),
                 Y = Round(y),
                 Z = Round(z)
@@ -291,6 +292,7 @@ namespace ProcessingProgram
                 OnChangeActionsCount(_processingActions.Count);
             _isSpeedChanged = false;
             return action;
+
         }
 
         /// <summary>

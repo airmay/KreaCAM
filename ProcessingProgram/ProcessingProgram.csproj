@@ -34,11 +34,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AcDbMgd">
-      <HintPath>..\..\ScemaLogicCAM\ACADddl\AcDbMgd.dll</HintPath>
+    <Reference Include="acdbmgd, Version=17.2.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AcadDll\acdbmgd.dll</HintPath>
     </Reference>
-    <Reference Include="AcMgd">
-      <HintPath>..\..\ScemaLogicCAM\ACADddl\AcMgd.dll</HintPath>
+    <Reference Include="acmgd, Version=17.2.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AcadDll\acmgd.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Pdf.v16.1.Core, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />

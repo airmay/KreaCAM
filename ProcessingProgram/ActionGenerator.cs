@@ -13,10 +13,10 @@ namespace ProcessingProgram
     /// </summary>
     public static class ActionGenerator
     {
-        private static IMachine Machine { get; set; }
+        private static Machine Machine { get; set; }
         private static Settings Settings { get; set; }
 
-        public static void SetMachine(IMachine machine)
+        public static void SetMachine(Machine machine)
         {
             Machine = machine;
             Settings = Settings.GetInstance();
@@ -116,9 +116,9 @@ namespace ProcessingProgram
                 Feed(toolpathCurve, direction, processObject.Curve.OutsideSign, par, isFirstPass || Settings.OneDirection);
 
                 if (processObject.Curve.Type == CurveType.Polyline || processObject.Curve.Type == CurveType.Circle)
-                    Machine.Cutting(AutocadUtils.Explode(toolpathCurve, direction == -1));
+                    Machine.Cutting(AutocadUtils.Explode(toolpathCurve, direction == -1), par.GreatSpeed);
                 else
-                    Machine.Cutting(toolpathCurve);
+                    Machine.Cutting(toolpathCurve, par.GreatSpeed);
 
                 Retract(toolpathCurve, direction, processObject.Curve.OutsideSign, par);
                 isFirstPass = false;
@@ -146,7 +146,7 @@ namespace ProcessingProgram
                 z -= k * enumerator.Current.GetLength();
                 if (z - z0 < CalcUtils.Tolerance) z = z0;
                 toolpathCurve = AutocadUtils.GetDisplacementCopy(enumerator.Current, z);
-                Machine.Cutting(toolpathCurve);
+                Machine.Cutting(toolpathCurve, par.GreatSpeed);
                 MoveCycle(enumerator);
             } while (z > z0);
 
@@ -154,7 +154,7 @@ namespace ProcessingProgram
             do
             {
                 toolpathCurve = AutocadUtils.GetDisplacementCopy(enumerator.Current, z0);
-                Machine.Cutting(toolpathCurve);
+                Machine.Cutting(toolpathCurve, par.GreatSpeed);
                 MoveCycle(enumerator);
             } while (enumerator.Current != startCurve);
             enumerator.Dispose();
@@ -174,15 +174,15 @@ namespace ProcessingProgram
             var feedGroup = CalcUtils.CalcFeedGroup(toolpathCurve, direction == 1, outsideSign, par.FeedType, par.FeedRadius, par.FeedAngle, par.FeedLength);
 
             if (isFirstPass)
-                Machine.SetPosition(feedGroup.Point, par.SmallSpeed);
+                Machine.SetPosition(feedGroup.Point, par.GreatSpeed);
             else
-                Machine.Move(feedGroup.Point);
+                Machine.Move(feedGroup.Point, par.GreatSpeed);
 
             if (Settings.WithCompensation)
                 Machine.SetCompensation(direction * outsideSign == 1 ? CompensationSide.Left : CompensationSide.Right);
 
-            Machine.EngageMove(feedGroup.Line);
-            Machine.EngageMove(feedGroup.Arc);
+            Machine.EngageMove(feedGroup.Line, par.SmallSpeed);
+            Machine.EngageMove(feedGroup.Arc, par.SmallSpeed);
 
             Machine.SetSpeed(par.GreatSpeed);
         }
@@ -192,10 +192,10 @@ namespace ProcessingProgram
             if (par.RetractionType == FeedType.None)
                 return;
             var feedGroup = CalcUtils.CalcFeedGroup(toolpathCurve, direction == -1, outsideSign, par.RetractionType, par.RetractionRadius, par.RetractionAngle, par.RetractionLength);
-            Machine.RetractMove(feedGroup.Arc);
+            Machine.RetractMove(feedGroup.Arc, par.GreatSpeed);
             if (Settings.WithCompensation)
                 Machine.SetCompensation(CompensationSide.None);
-            Machine.RetractMove(feedGroup.Line);
+            Machine.RetractMove(feedGroup.Line, par.GreatSpeed);
         }
 
         private static void CuttingProfileDisc(ProcessObject processObject, Curve curve, List<Curve> sectionCurves)
@@ -263,9 +263,9 @@ namespace ProcessingProgram
 
                 List<ProcessingAction> actions = new List<ProcessingAction>();
                 if (processObject.Curve.Type == CurveType.Polyline || processObject.Curve.Type == CurveType.Circle)
-                    actions = Machine.Cutting(AutocadUtils.Explode(toolpathCurve, direction == -1));
+                    actions = Machine.Cutting(AutocadUtils.Explode(toolpathCurve, direction == -1), par.GreatSpeed);
                 else
-                    actions.Add(Machine.Cutting(toolpathCurve));
+                    actions.Add(Machine.Cutting(toolpathCurve, par.GreatSpeed));
 
                 actions.ForEach(p => p.ToolObjectId = toolObjectId);
 
